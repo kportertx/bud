@@ -118,6 +118,12 @@ module Bud
     @channels[name] = @tables[name]
   end
 
+  def httpchannel(name, schema=nil, loopback=false)
+    define_collection(name)
+    @tables[name] = Bud::BudHttpChannel.new(name, self, schema, loopback)
+    @channels[name] = @tables[name]
+  end
+
   # declare a transient network collection that delivers facts back to the
   # current Bud instance. This is syntax sugar for a channel that always
   # delivers to the IP/port of the current Bud instance. Default schema
@@ -163,7 +169,7 @@ module Bud
     end
     collections.each do |tab|
       t_provides << [tab.to_s, mode]
-    end 
+    end
   end
 
   # Define methods to implement the state declarations for every registered kind

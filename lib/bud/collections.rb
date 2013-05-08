@@ -1069,6 +1069,18 @@ module Bud
     end
   end
 
+
+  ##############################################################################
+  # BudHttpChannel                                                             #
+  #                                                                            #
+  #                                                                            #
+  #                                                                            #
+  ##############################################################################
+  class BudHttpChannel < BudChannel
+
+  end
+
+
   class BudTerminal < BudScratch # :nodoc: all
     def initialize(name, bud_instance, prompt=false) # :nodoc: all
       super(name, bud_instance, [:line])
@@ -1397,7 +1409,7 @@ module Bud
       @linenum = 0
       @invalidated = true
     end
-    
+
     def tick
       @invalidated = true
     end
